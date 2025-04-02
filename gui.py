@@ -26,11 +26,11 @@ def calculate():
     elif (0 > float(programming.get()) or float(programming.get()) > 100) or (0 > float(art.get()) or float(art.get()) > 100) or (0 > float(science.get()) or float(science.get()) > 100) or (0 > float(math.get()) or float(math.get()) > 100) or (0 > float(history.get()) or float(history.get()) > 100):
         print("Please enter valid scores")
     else:
-        programminglist.append(int(programming.get()))
-        artlist.append(int(art.get()))
-        sciencelist.append(int(science.get()))
-        mathlist.append(int(math.get()))
-        historylist.append(int(history.get()))
+        programminglist.append(round(float(programming.get())))
+        artlist.append(round(float(art.get())))
+        sciencelist.append(round(float(science.get())))
+        mathlist.append(round(float(math.get())))
+        historylist.append(round(float(history.get())))
         numscores += 1
         average()
 
@@ -161,11 +161,11 @@ def average():
     global scienceav
     global mathav
     global historyav
-    programmingav = sum(programminglist)/len(programminglist)
-    artav = sum(artlist)/len(artlist)
-    scienceav = sum(sciencelist)/len(sciencelist)
-    mathav = sum(mathlist)/len(mathlist)
-    historyav = sum(historylist)/len(historylist)
+    programmingav = round(sum(programminglist)/len(programminglist))
+    artav = round(sum(artlist)/len(artlist))
+    scienceav = round(sum(sciencelist)/len(sciencelist))
+    mathav = round(sum(mathlist)/len(mathlist))
+    historyav = round(sum(historylist)/len(historylist))
 
 #Screen setup
 root = tk.Tk()
