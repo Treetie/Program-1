@@ -1,8 +1,11 @@
-#the sequence that will get printed
+#the fib sequence
 sequence = [0]
+#placeholder
+items = []
 
-#sequence calculator
+#sequence calculator (WORKS! :D)
 def calculate():
+    global items
     total_numbers = items[1]
     place = 2
     if total_numbers > 1:
@@ -10,8 +13,47 @@ def calculate():
         while place != total_numbers:
             sequence.append(sequence[-1] + sequence[-2])
             place += 1
-    print(sequence)
 
+#checks for each specific command and reacts accordingly
+def commands():
+    global items
+    items = input1.split(" ")
+    #switches numbers in list to ints
+    for item in items:
+        if item.isnumeric():
+            items.remove(item)
+            items.insert(1, int(item))
+    calculate()
+
+    #checks for numbering cmd
+    if " --numbering" in input1:
+        place = 1
+        for number in sequence:
+            sequence[place - 1] = f"{place}:{number}"
+            place += 1
+
+    #prints last digit only
+    if "--last-only" in input1:
+        print(sequence[-1])
+    
+    #checks for oneline cmd
+    elif "--one-line" in input1:
+        string = ""
+        for each in (sequence):
+            string += f"{str(each)}, "
+        #prints without last space or comma
+        print(string[:-2])
+
+    #prints normally (\n)
+    else:
+        for num in sequence:
+            print(num)
+
+#invalid format message
+def invalid():
+    print("Invalid formatting.")
+
+#main loop
 while True:
     #starting input
     input1 = input("./Fibonacci-gen ")
@@ -23,25 +65,21 @@ while True:
         #makes sure input is correct for count
         if input1.startswith("--count"):
             if input1[8].isdigit():
-                #splits inputs into separate items in a list
-                items = input1.split(" ")
-                #switches numbers to ints
-                for item in items:
-                    if item.isnumeric():
-                        items.remove(item)
-                        items.insert(1, int(item))
-                        #checks for --last-only
-                calculate()
-                if "--last-only" in input1:
-                    print("h")
-
+                commands()
+                break
             else:
-                print("Invalid format.")
+                invalid()
+                break
 
+        #checks for -c instead of count
         elif input1.startswith("-c"):
             if input1[3].isdigit():
-                print("yay")
-
-
-
-            
+                commands()
+                break
+            else:
+                invalid()
+                break
+        #if it doesn't start with those, it ends the program    
+        else:
+            invalid()
+            break
