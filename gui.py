@@ -22,9 +22,11 @@ def calculate():
     global numscores
     #checks for invalid inputs
     if programming.get() == "" or art.get == "" or science.get() == "" or math.get() == "" or history.get() == "":
-        print("Please enter valid scores")
+        label = tk.Label(root, text="Error. Please enter valid scores.")
+        label.grid(row=16, column=0)
     elif (0 > float(programming.get()) or float(programming.get()) > 100) or (0 > float(art.get()) or float(art.get()) > 100) or (0 > float(science.get()) or float(science.get()) > 100) or (0 > float(math.get()) or float(math.get()) > 100) or (0 > float(history.get()) or float(history.get()) > 100):
-        print("Please enter valid scores")
+        label = tk.Label(root, text="Error. Please enter valid scores.")
+        label.grid(row=16, column=0)
     else:
         programminglist.append(round(float(programming.get())))
         artlist.append(round(float(art.get())))
