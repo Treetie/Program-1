@@ -38,7 +38,7 @@ def commands():
 
     #prints last digit only
     if "--last-only" in input1:
-        print(sequence[-1])
+        print('"{\n  sequence:"', f'"{sequence[-1]}"', "\n }")
     
     #checks for oneline cmd
     elif "--one-line" in input1:
@@ -51,7 +51,7 @@ def commands():
     #prints normally (\n)
     else:
         for num in sequence:
-            print(num)
+            print('"{\n  sequence:"', f'"{sequence[-1]}"', "\n }")
 
 #invalid format message
 def invalid():
